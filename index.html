@@ -1,50 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Koen van Eijk</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
     <style>
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-            line-height: 1.5;
-            background-color: #f9f9f9;
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            background-color: #f8f9fa;
+            transition: background-color 0.3s, color 0.3s;
         }
 
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            font-weight: bold;
+        body.dark-mode {
+            background-color: #212529;
+            color: #f8f9fa;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
         }
 
         .container {
-            max-width: 800px;
+            max-width: 900px;
+            position: relative;
+            z-index: 1;
         }
 
         .social-icons a {
-            margin-right: 10px;
-            color: #333;
-            font-size: 24px;
+            margin-right: 15px;
+            color: #495057;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .dark-mode .social-icons a {
+            color: #e9ecef;
+        }
+
+        .social-icons a:hover {
+            color: #007bff;
         }
 
         .card {
             border: none;
-            border-radius: 5px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             margin-bottom: 30px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .dark-mode .card {
+            background-color: rgba(52, 58, 64, 0.9);
+            color: #f8f9fa;
         }
 
         .card-title {
-            font-size: 20px;
-            font-weight: bold;
-            margin-bottom: 10px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #007bff;
         }
 
         .profile-picture {
@@ -54,87 +78,204 @@
             object-fit: cover;
             margin-bottom: 20px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: 5px solid #fff;
+            transition: transform 0.3s;
+        }
+
+        .profile-picture:hover {
+            transform: scale(1.05);
+        }
+
+        #darkModeToggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1000;
+            background-color: #f8f9fa;
+            border-radius: 50%;
+            padding: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+        }
+
+        .dark-mode #darkModeToggle {
+            background-color: #343a40;
+        }
+
+        .project-link {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .project-link:hover {
+            color: #0056b3;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-container iframe, .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
         }
     </style>
 </head>
-
 <body>
+    <div id="particles-js"></div>
+    <div id="darkModeToggle">
+        <i class="bi bi-sun-fill"></i>
+    </div>
     <div class="container my-5">
-        <div class="text-center"> <img src="koen.jpeg" alt="Koen van Eijk" class="profile-picture">
+        <div class="text-center" data-aos="fade-down">
+            <img alt="Koen van Eijk" class="profile-picture" src="koen.jpeg"/>
             <h1 class="mb-4">Koen van Eijk</h1>
         </div>
-        <div class="text-center social-icons mb-5"> <a href="https://www.linkedin.com/in/koenvaneijk/"
-                target="_blank"><i class="bi bi-linkedin"></i></a> <a href="https://twitter.com/koenvaneijk"
-                target="_blank"><i class="bi bi-twitter-x"></i></a> <a href="mailto:vaneijk.koen@gmail.com"><i
-                    class="bi bi-envelope"></i></a> <a href="tel:+32473576262"><i class="bi bi-telephone"></i></a> <a
-                href="https://t.me/koenvaneijk" target="_blank"><i class="bi bi-telegram"></i></a> <a
-                href="https://wa.me/32473576262" target="_blank"><i class="bi bi-whatsapp"></i></a> </div>
-        <div class="card">
+        <div class="text-center social-icons mb-5" data-aos="fade-up">
+            <a href="https://www.linkedin.com/in/koenvaneijk/" target="_blank"><i class="bi bi-linkedin"></i></a>
+            <a href="https://twitter.com/koenvaneijk" target="_blank"><i class="bi bi-twitter-x"></i></a>
+            <a href="mailto:vaneijk.koen@gmail.com"><i class="bi bi-envelope"></i></a>
+            <a href="tel:+32473576262"><i class="bi bi-telephone"></i></a>
+            <a href="https://t.me/koenvaneijk" target="_blank"><i class="bi bi-telegram"></i></a>
+            <a href="https://wa.me/32473576262" target="_blank"><i class="bi bi-whatsapp"></i></a>
+        </div>
+        <div class="card" data-aos="fade-up">
             <div class="card-body">
                 <h2 class="card-title">About Me</h2>
-                <p>Passionate, entrepreneurial, and tech-savvy software engineer with a specialization in SaaS product
-                    development and a strong background in AI. I bring with me a wealth of experience in using a variety
-                    of technologies, including but not limited to Python, SQL, Docker and Docker Compose, HTML, CSS, and
-                    JavaScript, equipping me to tackle full stack development projects.</p>
-                <p>In my past entrepreneurial journey, I successfully founded Automagica, a venture that caught the
-                    attention of Netcall and was subsequently acquired in 2020. This experience honed my ability to
-                    drive a product from ideation to execution and navigate the intricate process of a successful exit.
-                </p>
+                <p>Passionate, entrepreneurial, and tech-savvy software engineer with a specialization in SaaS product development and a strong background in AI. I bring with me a wealth of experience in using a variety of technologies, including but not limited to Python, SQL, Docker and Docker Compose, HTML, CSS, and JavaScript, equipping me to tackle full stack development projects.</p>
+                <p>In my past entrepreneurial journey, I successfully founded Automagica, a venture that caught the attention of Netcall and was subsequently acquired in 2020. This experience honed my ability to drive a product from ideation to execution and navigate the intricate process of a successful exit.</p>
             </div>
         </div>
-        <div class="card">
+        <div class="card" data-aos="fade-up">
             <div class="card-body">
-                <h2 class="card-title">Current projects</h2>
-                <a href="https://magifind.ai">
-                    <h3>Magifind.ai</h3>
-                </a>
-                <p>Enterprise AI Search - multi-site search that understands user intent and personally recommends
-                    search results, fully end to end autonomous site index and meta data extraction with AI</p>
-                <a href="https://t.me/summ_yt">
-                    <h3>SummYT - AI YouTube Summarizer</h3>
-                </a>
-                <p>Telegram Bot that uses AI to instantly summarize YouTube videos, extract key learnings and other
-                    important information.</p>
+                <h2 class="card-title">Current Projects</h2>
+                <div class="mb-4">
+                    <a href="https://magifind.com" class="project-link">
+                        <h3>Magifind</h3>
+                    </a>
+                    <p>Enterprise AI Search - multi-site search that understands user intent and personally recommends search results, fully end to end autonomous site index and meta data extraction with AI</p>
+                </div>
+                <div class="mb-4">
+                    <a href="https://datatalk.app" class="project-link">
+                        <h3>DataTalk</h3>
+                    </a>
+                    <p>Leverage AI to extract knowledge from your data.</p>
+                </div>
+                <div class="mb-4">
+                    <a href="https://openrecall.github.io" class="project-link">
+                        <h3>OpenRecall</h3>
+                    </a>
+                    <div class="video-container">
+                        <video controls>
+                            <source src="./openrecall.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <p class="mt-2">A fully open-source, privacy-first alternative to proprietary solutions like Microsoft's Windows Recall or Limitless' Rewind.ai. With OpenRecall, you can easily access your digital history, enhancing your memory and productivity without compromising your privacy.</p>
+                </div>
+                <div>
+                    <a href="https://t.me/summ_yt" class="project-link">
+                        <h3>SummYT - Summarize YouTube with AI</h3>
+                    </a>
+                    <p>Telegram Bot that uses AI to instantly summarize YouTube videos, extract key learnings and other important information.</p>
+                </div>
             </div>
         </div>
-        <div class="card">
+        <div class="card" data-aos="fade-up">
             <div class="card-body">
-                <h2 class="card-title">Experience</h2>
-                <h3>Founder at Magifind</h3>
-                <p class="text-muted">Mar 2024 - Present · 2 mos · Belgium</p>
-                <p>Enterprise AI Search - www.magifind.com</p>
-                <h3>Founder/consultant at Oak Mgt BV · Self-employed</h3>
-                <p class="text-muted">Jan 2020 - Present · 4 yrs 4 mos · Kinrooi, Flemish Region, Belgium</p>
-                <p>Consultancy/development work for: - AI/ML solutions - VR experiences - Blockchain (Bitcoin/Layer2)
-                    solutions</p>
-                <h3>Co-Founder at Automagica</h3>
-                <p class="text-muted">Feb 2018 - Oct 2020 · 2 yrs 9 mos · Belgium</p>
-                <p>Acquired by Netcall plc in 2020 Leverage Artificial Intelligence and cognitive abilities in your
-                    automation projects with Automagica.</p>
-                <h3>Co-Founder at Oakwood.ai</h3>
-                <p class="text-muted">Aug 2017 - Oct 2020 · 3 yrs 3 mos · Limburg, Belgium</p>
-                <p>Turning high-tech into real-tech supported by Artificial Intelligence. We provide companies with
-                    simple solutions to complex problems.</p>
-                <h3>Botfather at Bottist</h3>
-                <p class="text-muted">Aug 2017 - Oct 2020 · 3 yrs 3 mos · Limburg, Belgium</p>
-                <p>Bottist supports companies from start-to-finish in implementing chatbots for customer servicing &
-                    support. We provide off-the-shelf solutions for question-answering, product/service guidance, search
-                    and personalization engines, but we also have the capabilities and skills to provide heavily
-                    customized, tailored solutions.</p>
-                <h3>Technology Advisor - Data & Analytics - IT Advisory at KPMG Belgium</h3>
-                <p class="text-muted">Aug 2015 - Jul 2017 · 2 yrs · Antwerp Area, Belgium</p>
-                <p>Leading and working on engagements concerning data analysis, BI, predictive analytics, machine
-                    learning, automation and cloud computing. Building bridges between Business and IT in order to
-                    generate added value for our clients every day. At KPMG I had the opportunity to closely work
-                    together with a great deal of interesting clients on a great variety of projects within different
-                    industries. Clients I had the honour to work with, can be found (among others) in the government,
-                    utilities, entertainment and consumer goods industries.</p>
+                <h2 class="card-title">Past Projects</h2>
+                <div class="mb-4">
+                    <h3>Disc Zap VR</h3>
+                    <div class="video-container">
+                        <video controls>
+                            <source src="./disczapvr.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <p class="mt-2">A multiplayer VR game developed using the <a href="https://godotengine.org/" target="_blank" class="project-link">Godot game engine</a>. This project showcases my skills in virtual reality development, multiplayer networking, and game design. The game was published in the <a href="https://www.meta.com/en-gb/experiences/5507455385967532/" target="_blank" class="project-link">Meta Quest store</a> and on the <a href="https://sidequestvr.com/app/10440/disc-zap-vr" target="_blank" class="project-link">SideQuest store.</a> Join your friends in this Disc Shooting VR experience with multiplayer lobbies where you can shoot discs in synthwave style all while enjoying vibrant synthwave music. By hitting the beats at the right timings you can increase your score.</p>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Meta_Quest_logo.svg/1494px-Meta_Quest_logo.svg.png?20220304012128" width="200" class="mt-2">
+                </div>
+                <div>
+                    <h3>Automagica</h3>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/OYUj_Gc3XrY?si=a-vZ5y3KIoHTYCCc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                    <p class="mt-2">Automagica is a Python library that integrates with the Windows operating system, allowing users to automate repetitive tasks. The library is designed to be simple to use and easy to learn, making it accessible to users with no programming experience. Automagica has been used by thousands of users worldwide to automate tasks such as data entry, web scraping, and file management.</p>
+                </div>
             </div>
         </div>
-
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            AOS.init({
+                duration: 1000,
+                once: true
+            });
 
+            const darkModeToggle = $('#darkModeToggle');
+            const body = $('body');
+            const icon = darkModeToggle.find('i');
+
+            darkModeToggle.click(function() {
+                body.toggleClass('dark-mode');
+                if (body.hasClass('dark-mode')) {
+                    icon.removeClass('bi-sun-fill').addClass('bi-moon-fill');
+                    updateParticlesColor('#ffffff');
+                } else {
+                    icon.removeClass('bi-moon-fill').addClass('bi-sun-fill');
+                    updateParticlesColor('#000000');
+                }
+            });
+
+            particlesJS('particles-js', {
+                particles: {
+                    number: { value: 80, density: { enable: true, value_area: 800 } },
+                    color: { value: '#000000' },
+                    shape: { type: 'circle' },
+                    opacity: { value: 0.5, random: false },
+                    size: { value: 3, random: true },
+                    line_linked: { enable: true, distance: 150, color: '#000000', opacity: 0.4, width: 1 },
+                    move: { enable: true, speed: 6, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false }
+                },
+                interactivity: {
+                    detect_on: 'canvas',
+                    events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' }, resize: true },
+                    modes: { grab: { distance: 400, line_linked: { opacity: 1 } }, bubble: { distance: 400, size: 40, duration: 2, opacity: 8, speed: 3 }, repulse: { distance: 200, duration: 0.4 }, push: { particles_nb: 4 }, remove: { particles_nb: 2 } }
+                },
+                retina_detect: true
+            });
+
+            function updateParticlesColor(color) {
+                if (window.pJSDom && window.pJSDom[0] && window.pJSDom[0].pJS) {
+                    window.pJSDom[0].pJS.particles.color.value = color;
+                    window.pJSDom[0].pJS.particles.line_linked.color = color;
+                    window.pJSDom[0].pJS.fn.particlesRefresh();
+                }
+            }
+        });
+    </script>
+</body>
 </html>
