@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Koen van Eijk | Autonomous AI Agent Development for Benelux Businesses</title>
+    <meta name="description" content="Exited founder building custom AI agents to solve complex business problems. Offering a fixed-price Autonomous Agent Kickstarter to help you automate and scale.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+    
+    <!-- AOS Animation -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-dark: #1a202c;
+            --primary-light: #f7fafc;
+            --accent-color: #38b2ac;
+            --accent-hover: #2c8a87;
+            --text-muted: #718096;
+            --card-bg: #2d3748;
+            --border-color: #4a5568;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            background-color: var(--primary-dark);
+            color: var(--primary-light);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: 80px 0;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 800;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--accent-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text .subheadline {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+
+        .hero-image {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border: 3px solid var(--border-color);
+        }
+
+        /* CTA Button */
+        .cta-button {
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            padding: 18px 36px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(56, 178, 172, 0.3);
+        }
+
+        .cta-button:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(56, 178, 172, 0.4);
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Social Icons */
+        .social-icons {
+            display: flex;
+            gap: 24px;
+            margin-top: 32px;
+        }
+
+        .social-icons a {
+            color: var(--text-muted);
+            font-size: 1.75rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Social Proof Bar */
+        .social-proof {
+            background: var(--card-bg);
+            padding: 40px 0;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .social-proof-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .social-proof-text {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .social-proof img {
+            height: 40px;
+            width: auto;
+            filter: brightness(0) invert(1);
+            opacity: 0.8;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            margin-bottom: 48px;
+            text-align: center;
+        }
+
+        /* Offer Section */
+        .offer-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .offer-text h2 {
+            text-align: left;
+            margin-bottom: 24px;
+        }
+
+        .offer-text p {
+            font-size: 1.125rem;
+            margin-bottom: 32px;
+            color: var(--text-muted);
+        }
+
+        .offer-steps {
+            list-style: none;
+            padding: 0;
+        }
+
+        .offer-steps li {
+            display: flex;
+            align-items: start;
+            margin-bottom: 24px;
+            font-size: 1.05rem;
+        }
+
+        .offer-steps li .icon {
+            color: var(--accent-color);
+            margin-right: 16px;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .offer-visual {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .offer-visual-box {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 60px;
+            text-align: center;
+            border: 2px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .offer-visual-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, var(--accent-color) 0%, transparent 70%);
+            opacity: 0.05;
+        }
+
+        .offer-visual-icon {
+            font-size: 4rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+
+        /* Case Studies */
+        .case-studies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
+            gap: 30px;
+        }
+
+        .case-study-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 32px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .case-study-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .case-study-icon {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+
+        .case-study-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 4px;
+            color: var(--accent-color);
+        }
+
+        .case-study-type {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+            line-height: 1.4;
+        }
+
+        .case-study-card p {
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: auto;
+            padding-top: 16px;
+        }
+
+        .tech-tag {
+            background: rgba(56, 178, 172, 0.1);
+            color: var(--accent-color);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            border: 1px solid var(--accent-color);
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .about-text h2 {
+            text-align: left;
+            margin-bottom: 24px;
+        }
+
+        .about-text p {
+            font-size: 1.125rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        /* Final CTA */
+        .final-cta {
+            background: linear-gradient(135deg, var(--card-bg) 0%, rgba(56, 178, 172, 0.1) 100%);
+            padding: 100px 0;
+            text-align: center;
+            border-radius: 20px;
+            margin: 0 20px;
+        }
+
+        .final-cta h2 {
+            margin-bottom: 24px;
+        }
+
+        .final-cta p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .final-cta .cta-button {
+            font-size: 1.25rem;
+            padding: 20px 40px;
+        }
+
+        /* Contact Section */
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            text-align: center;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            font-size: 1.125rem;
+            color: var(--primary-light);
+        }
+
+        .contact-item i {
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            margin-right: 12px;
+        }
+        
+        .contact-item a {
+            color: var(--primary-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: var(--accent-color);
+        }
+
+        .footer-socials {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .footer-socials a {
+            color: var(--text-muted);
+            font-size: 1.75rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-socials a:hover {
+            color: var(--accent-color);
+        }
+        
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        .cta-subtext {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-top: 16px;
+        }
+
+        /* Testimonials */
+        .testimonial {
+            padding: 80px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .testimonial-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .testimonial-quote {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            font-style: italic;
+            color: var(--primary-light);
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .testimonial-author-info span {
+            display: block;
+        }
+        
+        .testimonial-author-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--border-color);
+        }
+
+        .testimonial-author-info {
+            text-align: left;
+        }
+        
+        .testimonial-author-name {
+            font-weight: 600;
+            color: var(--primary-light);
+        }
+
+        .testimonial-author-title {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Additional Testimonials Grid */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 32px;
+            border-left: 4px solid var(--accent-color);
+            display: flex;
+            flex-direction: column;
+            height: 100%; /* To make cards in a row equal height */
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            flex-grow: 1; /* Pushes author to the bottom */
+        }
+
+        .inline-testimonial {
+            background: rgba(56, 178, 172, 0.05);
+            border-left: 4px solid var(--accent-color);
+            padding: 24px;
+            margin-top: 40px;
+            border-radius: 8px;
+        }
+
+        .inline-testimonial p {
+            font-size: 1rem;
+            font-style: italic;
+            margin-bottom: 16px;
+            color: var(--primary-light);
+        }
+
+        .inline-testimonial .author {
+            font-weight: 600;
+            color: var(--text-muted);
+            font-style: normal;
+        }
+
+        /* Demo Section */
+        .demo-section {
+            background-color: var(--primary-dark);
+        }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            background: #000;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        .video-placeholder {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            color: var(--primary-light);
+            text-align: center;
+        }
+        .video-placeholder i {
+            font-size: 4rem;
+            color: var(--accent-color);
+            margin-bottom: 16px;
+        }
+        .video-placeholder p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content,
+            .offer-content,
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero {
+                min-height: auto;
+                padding: 60px 0;
+            }
+
+            .hero-text {
+                text-align: center;
+            }
+
+            .social-icons {
+                justify-content: center;
+            }
+
+            .offer-text h2,
+            .about-text h2 {
+                text-align: center;
+            }
+
+            
+
+            .social-proof-content {
+                flex-direction: column;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text" data-aos="fade-right">
+                    <h1>I Build Autonomous AI Agents That Solve Your Toughest Business Problems.</h1>
+                    <p class="subheadline">Based in the heart of the Benelux, I partner directly with Belgian and Dutch businesses to deploy high-impact AI solutions in weeks, not months.</p>
+                    <a href="https://calendar.app.google/TZw8x7xhz7ZdPn3U7" target="_blank" class="cta-button">
+                        Book Your €400 AI Roadmap Session
+                    </a>
+                    <p class="cta-subtext">This fee is fully credited towards your Kickstarter project.</p>
+                    <div class="social-icons">
+                        <a href="https://github.com/koenvaneijk" target="_blank" aria-label="GitHub"><i class="bi bi-github"></i></a>
+                        <a href="https://www.linkedin.com/in/koenvaneijk/" target="_blank" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                        <a href="https://twitter.com/koenvaneijk" target="_blank" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+                    </div>
+                </div>
+                <div class="hero-image" data-aos="fade-left">
+                    <img src="images/koen.jpeg" alt="Koen van Eijk">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof Bar -->
+    <section class="social-proof">
+        <div class="container">
+            <div class="social-proof-content" data-aos="fade-up">
+                <span class="social-proof-text">Trusted by leading organizations:</span>
+                <img src="images/netcall.svg" alt="Netcall" />
+                <img src="images/kpmg.svg" alt="KPMG" />
+                <img src="images/adidas.svg" alt="Adidas" />
+                <img src="images/google.svg" alt="Google" />
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial: Netcall -->
+    <section class="testimonial">
+        <div class="container" data-aos="fade-up">
+            <div class="testimonial-content">
+                <p class="testimonial-quote">"Koen's technical acumen, attention to detail, and professionalism made substantial and lasting contributions to our company. His expertise was critical in the seamless integration of his technology into our enterprise platform after the acquisition. We highly recommend him."</p>
+                <div class="testimonial-author">
+                    <img src="images/richard_billington.jpg" alt="Richard Billington" class="testimonial-author-img">
+                    <div class="testimonial-author-info">
+                        <span class="testimonial-author-name">Richard Billington</span>
+                        <span class="testimonial-author-title">Chief Technical Officer, Netcall</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Offer -->
+    <section class="offer">
+        <div class="container">
+            <div class="offer-content">
+                <div class="offer-text" data-aos="fade-right">
+                    <h2>My Offer: The Autonomous Agent Kickstarter</h2>
+                    <p>A fixed-price, 3-4 week engagement to design, build, and deploy a custom AI agent that tackles one specific, high-value challenge in your business. No endless consulting, just tangible results.</p>
+                    <ul class="offer-steps">
+                        <li>
+                            <span class="icon">✅</span>
+                            <div>
+                                <strong>Step 1: The AI Opportunity Roadmap Session (€400)</strong> - A paid 90-minute deep dive where we co-design a blueprint for your agent. You receive a tangible plan of action, and the fee is credited towards the full project.
+                            </div>
+                        </li>
+                        <li>
+                            <span class="icon">✅</span>
+                            <div>
+                                <strong>Step 2: Custom Agent Development</strong> - I personally build the full solution using enterprise-grade architecture.
+                            </div>
+                        </li>
+                        <li>
+                            <span class="icon">✅</span>
+                            <div>
+                                <strong>Step 3: Deployment & Handover</strong> - I deploy the agent into your workflow and provide full documentation.
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="inline-testimonial" data-aos="fade-up">
+                        <p>"Koen's dynamic and personal approach delivered results incredibly quickly. Within a total lead time of just three months, we had our first complex automation project fully operational."</p>
+                        <span class="author">Kris Ranson - Head of Department, AZ Maria Middelares</span>
+                    </div>
+                    <a href="https://calendar.app.google/TZw8x7xhz7ZdPn3U7" target="_blank" class="cta-button" style="margin-top: 40px;">
+                        Book Your €400 Roadmap Session
+                    </a>
+                    <p class="cta-subtext">This fee is fully credited towards your Kickstarter project.</p>
+                </div>
+                <div class="offer-visual" data-aos="fade-left">
+                    <div class="offer-visual-box">
+                        <div class="offer-visual-icon">
+                            <i class="bi bi-robot"></i>
+                        </div>
+                        <h3>3-4 Weeks</h3>
+                        <p>From concept to deployed AI agent</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section class="demo-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">See an Agent in Action</h2>
+            <p data-aos="fade-up" style="text-align: center; max-width: 700px; margin: -24px auto 48px; color: var(--text-muted);">
+                Watch this 2-minute demo to see how an AI agent can perform a complete competitor analysis, delivering insights in a fraction of the time it would take a human analyst.
+            </p>
+            <div class="video-container" data-aos="fade-up">
+                <!-- 
+                    To embed your video, replace this div with your embed code from Loom, Tella, or YouTube.
+                    Example YouTube embed:
+                    <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+                -->
+                <div class="video-placeholder">
+                    <i class="bi bi-play-circle-fill"></i>
+                    <p>Demo video coming soon!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies -->
+    <section class="case-studies">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Examples of My Work</h2>
+            <div class="case-studies-grid">
+                <div class="case-study-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="case-study-icon"><i class="bi bi-diagram-3-fill"></i></div>
+                    <h3>PatGrid</h3>
+                    <span class="case-study-type">Multi-Agent System</span>
+                    <p>Reduced patent analysis time by over 75% for an IP firm by architecting a multi-agent system that automates deep research and technical report generation.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">LangChain</span>
+                        <span class="tech-tag">LLMs</span>
+                        <span class="tech-tag">RAG</span>
+                    </div>
+                </div>
+                <div class="case-study-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="case-study-icon"><i class="bi bi-shield-lock-fill"></i></div>
+                    <h3>OpenRecall</h3>
+                    <span class="case-study-type">Privacy-First AI</span>
+                    <p>Built an open-source, on-device alternative to Windows Recall, demonstrating expertise in system-level applications where data privacy is paramount.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Computer Vision</span>
+                        <span class="tech-tag">System-Level Python</span>
+                        <span class="tech-tag">SQLite</span>
+                    </div>
+                </div>
+                <div class="case-study-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="case-study-icon"><i class="bi bi-eye-slash-fill"></i></div>
+                    <h3>RedactWise</h3>
+                    <span class="case-study-type">Specialized AI</span>
+                    <p>Engineered an AI platform to automatically detect and redact sensitive information from legal documents, ensuring compliance.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">NLP</span>
+                        <span class="tech-tag">Computer Vision</span>
+                        <span class="tech-tag">Fine-Tuning</span>
+                    </div>
+                </div>
+                <div class="case-study-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="case-study-icon"><i class="bi bi-code-slash"></i></div>
+                    <h3>tinycoder</h3>
+                    <span class="case-study-type">AI Coding Assistant</span>
+                    <p>Developed an open-source, command-line AI coding assistant to streamline developer workflows, featuring intelligent context-building, multi-LLM support, and deep Git integration.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">LLM Integration</span>
+                        <span class="tech-tag">CLI Tool</span>
+                        <span class="tech-tag">Git</span>
+                    </div>
+                </div>
+            </div>
+            <div class="inline-testimonial" style="max-width: 800px; margin: 60px auto 0 auto; text-align: center; border-left: none; border-top: 4px solid var(--accent-color);" data-aos="fade-up">
+                <p>"Koen is solution-driven, flexible, and highly knowledgeable in the domain of automation. I particularly appreciated his ingenuity in circumventing the bottlenecks created by our client's legacy systems. He has an outstanding work ethic and always met every deadline."</p>
+                <div class="testimonial-author" style="margin-top: 24px;">
+                    <img src="images/thomas_deruyck.webp" alt="Thomas De Ruyck" class="testimonial-author-img">
+                    <div class="testimonial-author-info">
+                        <span class="testimonial-author-name">Thomas De Ruyck</span>
+                        <span class="testimonial-author-title">Partner, KPMG Belgium</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Additional Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">What Industry Leaders Say</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+                    <p>"Koen is a person you can count on. He's very good and passionate about what he does. He has the typical leader profile and is very skilled in making the complex more simple."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-author-info">
+                            <span class="testimonial-author-name">Jorrit van den Berg</span>
+                            <span class="testimonial-author-title">Operations Manager, Tesla</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+                    <p>"Koen is an adaptable and highly-driven individual with a practical approach and clear maturity that distinguishes him from others. He always gets the job done."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-author-info">
+                            <span class="testimonial-author-name">Paul-Emmanuel Tasiaux</span>
+                            <span class="testimonial-author-title">Principal, Boston Consulting Group (BCG)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
+                    <p>"Koen's curiosity and eagerness allowed him to be onboarded very fast. His focus on client benefits and high quality standard of work allowed us to successfully close the project and upsell."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-author-info">
+                            <span class="testimonial-author-name">Jeroen Habils</span>
+                            <span class="testimonial-author-title">Project Manager, DI Blue</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image" data-aos="fade-right">
+                    <img src="images/koen.jpeg" alt="Koen van Eijk">
+                </div>
+                <div class="about-text" data-aos="fade-left">
+                    <h2>About Koen</h2>
+                    <p>I'm a hands-on technical founder and AI architect. My journey began with founding Automagica, where I led the development of a smart automation platform from the ground up, culminating in a successful acquisition by Netcall. My focus has since evolved to the cutting edge of agentic AI, where I now work directly with businesses here in the Benelux to build sophisticated, goal-oriented autonomous systems.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Get in Touch</h2>
+            <div class="contact-info" data-aos="fade-up">
+                <div class="contact-item">
+                    <i class="bi bi-envelope"></i>
+                    <a href="mailto:koen@koenvaneijk.com">koen@koenvaneijk.com</a>
+                </div>
+                <div class="contact-item">
+                    <i class="bi bi-telephone"></i>
+                    <span>BE/EU: <a href="tel:+32473576262">+32 473 57 62 62</a></span>
+                </div>
+                <div class="contact-item">
+                    <i class="bi bi-telephone"></i>
+                    <span>US/Intl: <a href="tel:+15122289501">+1 512 228 9501</a></span>
+                </div>
+                <div class="contact-item">
+                    <i class="bi bi-geo-alt"></i>
+                    <a href="https://maps.app.goo.gl/f88XgsDjybGJg3JF9" target="_blank" rel="noopener noreferrer">Weertersteenweg 5A (Oph.), 3640 Kinrooi, Belgium</a>
+                </div>
+            </div>
+            <div class="footer-socials" data-aos="fade-up">
+                <a href="https://github.com/koenvaneijk" target="_blank" aria-label="GitHub"><i class="bi bi-github"></i></a>
+                <a href="https://www.linkedin.com/in/koenvaneijk/" target="_blank" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                <a href="https://twitter.com/koenvaneijk" target="_blank" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta-section">
+        <div class="container">
+            <div class="final-cta" data-aos="fade-up">
+                <h2>Ready to Deploy Your First AI Agent?</h2>
+                <p>Let's find out how an autonomous agent can create tangible value for your business. It all starts with a single, focused strategy session.</p>
+                <a href="https://calendar.app.google/TZw8x7xhz7ZdPn3U7" target="_blank" class="cta-button">
+                    Book Your €400 AI Roadmap Session
+                </a>
+                <p class="cta-subtext" style="margin-top: 24px;">Remember, this fee is fully credited towards your Kickstarter project.</p>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Initialize Particles
+        particlesJS('particles-js', {
+            particles: {
+                number: { 
+                    value: 30, 
+                    density: { enable: true, value_area: 800 } 
+                },
+                color: { value: '#38b2ac' },
+                shape: { type: 'circle' },
+                opacity: { 
+                    value: 0.3, 
+                    random: true 
+                },
+                size: { 
+                    value: 3, 
+                    random: true 
+                },
+                line_linked: { 
+                    enable: true, 
+                    distance: 200, 
+                    color: '#38b2ac', 
+                    opacity: 0.2, 
+                    width: 1 
+                },
+                move: { 
+                    enable: true, 
+                    speed: 1, 
+                    direction: 'none', 
+                    random: true, 
+                    straight: false, 
+                    out_mode: 'out', 
+                    bounce: false 
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: { 
+                    onhover: { enable: false }, 
+                    onclick: { enable: false }, 
+                    resize: true 
+                }
+            },
+            retina_detect: true
+        });
+    </script>
+</body>
+</html>
