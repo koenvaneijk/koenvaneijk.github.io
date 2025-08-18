@@ -74,10 +74,13 @@
             font-size: clamp(2.5rem, 5vw, 3.5rem);
             font-weight: 800;
             margin-bottom: 24px;
-            background: linear-gradient(135deg, var(--primary-light) 0%, var(--accent-color) 100%);
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--accent-color) 50%, var(--primary-light) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            background-size: 200% 200%;
+            animation: shimmer 8s ease infinite;
+            min-height: 210px; /* Prevents layout shift during typing animation */
         }
 
         .hero-text .subheadline {
@@ -275,7 +278,7 @@
         .case-study-card:hover {
             transform: translateY(-5px);
             border-color: var(--accent-color);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), 0 0 20px rgba(56, 178, 172, 0.5);
         }
 
         .case-study-icon {
@@ -579,6 +582,23 @@
             color: var(--text-muted);
         }
 
+        @keyframes shimmer {
+            0%{ background-position: 0% 50%; }
+            50%{ background-position: 100% 50%; }
+            100%{ background-position: 0% 50%; }
+        }
+
+        /* Typed.js cursor styling */
+        .typed-cursor {
+            color: var(--accent-color);
+            font-weight: 400; /* Prevent cursor from being bold */
+            opacity: 1;
+            animation: typedjsBlink 0.7s infinite;
+        }
+        @keyframes typedjsBlink {
+            50% { opacity: 0.0; }
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .hero-content,
@@ -599,6 +619,10 @@
 
             .social-icons {
                 justify-content: center;
+            }
+
+            .hero-text h1 {
+                min-height: 250px; /* Adjust for more lines on mobile */
             }
 
             .offer-text h2,
@@ -626,7 +650,7 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text" data-aos="fade-right">
-                    <h1>I Build Autonomous AI Agents That Solve Your Toughest Business Problems.</h1>
+                    <h1 id="typed-headline"></h1>
                     <p class="subheadline">Based in the heart of the Benelux, I partner directly with Belgian and Dutch businesses to deploy high-impact AI solutions in weeks, not months.</p>
                     <a href="https://calendar.app.google/TZw8x7xhz7ZdPn3U7" target="_blank" class="cta-button">
                         Book Your €400 AI Roadmap Session
@@ -909,6 +933,7 @@
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
     <script>
         // Initialize AOS
         AOS.init({
@@ -917,17 +942,27 @@
             offset: 100
         });
 
-        // Initialize Particles
+        // Initialize Typed.js for the hero headline
+        new Typed('#typed-headline', {
+            strings: ["I Build Autonomous AI Agents That Solve Your Toughest Business Problems."],
+            typeSpeed: 40,
+            startDelay: 500,
+            loop: false,
+            showCursor: true,
+            cursorChar: '_',
+        });
+
+        // Initialize Particles.js with interactive configuration
         particlesJS('particles-js', {
             particles: {
                 number: { 
-                    value: 30, 
+                    value: 60, 
                     density: { enable: true, value_area: 800 } 
                 },
                 color: { value: '#38b2ac' },
                 shape: { type: 'circle' },
                 opacity: { 
-                    value: 0.3, 
+                    value: 0.4, 
                     random: true 
                 },
                 size: { 
@@ -936,14 +971,14 @@
                 },
                 line_linked: { 
                     enable: true, 
-                    distance: 200, 
+                    distance: 150, 
                     color: '#38b2ac', 
-                    opacity: 0.2, 
+                    opacity: 0.3, 
                     width: 1 
                 },
                 move: { 
                     enable: true, 
-                    speed: 1, 
+                    speed: 2, 
                     direction: 'none', 
                     random: true, 
                     straight: false, 
@@ -954,9 +989,16 @@
             interactivity: {
                 detect_on: 'canvas',
                 events: { 
-                    onhover: { enable: false }, 
-                    onclick: { enable: false }, 
+                    onhover: { enable: true, mode: 'grab' }, 
+                    onclick: { enable: true, mode: 'push' }, 
                     resize: true 
+                },
+                modes: {
+                    grab: {
+                        distance: 140,
+                        line_linked: { opacity: 0.8 }
+                    },
+                    push: { particles_nb: 4 }
                 }
             },
             retina_detect: true
