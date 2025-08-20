@@ -258,11 +258,43 @@
             margin-bottom: 20px;
         }
 
-        /* Case Studies */
-        .case-studies-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
+        /* Case Studies Carousel */
+        .case-studies {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .carousel-container {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+            border-radius: 20px;
+            background: linear-gradient(180deg, 
+                rgba(26, 32, 44, 0) 0%, 
+                rgba(26, 32, 44, 0.05) 10%, 
+                rgba(26, 32, 44, 0.05) 90%, 
+                rgba(26, 32, 44, 0) 100%
+            );
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: 24px;
+            animation: scroll-vertical 40s linear infinite;
+            padding: 24px 0;
+        }
+
+        .carousel-track:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes scroll-vertical {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(calc(-100% - 24px));
+            }
         }
 
         .case-study-card {
@@ -273,18 +305,55 @@
             transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
+            min-width: 380px;
+            width: 380px;
+            height: 450px;
+            flex-shrink: 0;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .case-study-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                var(--accent-color), 
+                transparent
+            );
+            transform: translateX(-100%);
+            transition: transform 0.5s ease;
+        }
+
+        .case-study-card:hover::before {
+            transform: translateX(0);
         }
 
         .case-study-card:hover {
-            transform: translateY(-5px);
+            transform: scale(1.02);
             border-color: var(--accent-color);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), 0 0 20px rgba(56, 178, 172, 0.5);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 
+                        0 0 30px rgba(56, 178, 172, 0.2);
+            background: linear-gradient(135deg, 
+                var(--card-bg) 0%, 
+                rgba(56, 178, 172, 0.05) 100%
+            );
         }
 
         .case-study-icon {
             font-size: 2.5rem;
             color: var(--accent-color);
             margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .case-study-card:hover .case-study-icon {
+            transform: scale(1.1) rotate(5deg);
         }
 
         .case-study-card h3 {
@@ -308,6 +377,7 @@
             color: var(--text-muted);
             margin-bottom: 16px;
             line-height: 1.6;
+            flex-grow: 1;
         }
 
         .tech-tags {
@@ -325,6 +395,68 @@
             border-radius: 20px;
             font-size: 0.875rem;
             border: 1px solid var(--accent-color);
+            transition: all 0.2s ease;
+        }
+
+        .case-study-card:hover .tech-tag {
+            background: rgba(56, 178, 172, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Gradient overlays for smooth edges */
+        .carousel-container::before,
+        .carousel-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100px;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .carousel-container::before {
+            left: 0;
+            background: linear-gradient(90deg, 
+                var(--primary-dark) 0%, 
+                transparent 100%
+            );
+        }
+
+        .carousel-container::after {
+            right: 0;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                var(--primary-dark) 100%
+            );
+        }
+
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .carousel-control {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--border-color);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-control:hover {
+            background: var(--accent-color);
+            transform: scale(1.2);
+        }
+
+        .carousel-control.active {
+            background: var(--accent-color);
+            width: 32px;
+            border-radius: 6px;
         }
 
         /* About Section */
@@ -601,6 +733,30 @@
 
         /* Responsive */
         @media (max-width: 768px) {
+            .carousel-container {
+                height: 420px;
+            }
+
+            .case-study-card {
+                min-width: 320px;
+                width: 320px;
+                height: 380px;
+                padding: 24px;
+            }
+
+            .carousel-container::before,
+            .carousel-container::after {
+                width: 50px;
+            }
+
+            @keyframes scroll-vertical {
+                0% {
+                    transform: translateX(0);
+                }
+                100% {
+                    transform: translateX(calc(-100% - 24px));
+                }
+            }
             .hero-content,
             .offer-content,
             .about-content {
@@ -758,82 +914,7 @@
         </div>
     </section>
 
-    <!-- Case Studies -->
-    <section class="case-studies">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Examples of My Work</h2>
-            <div class="case-studies-grid">
-                <div class="case-study-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="case-study-icon"><i class="bi bi-diagram-3-fill"></i></div>
-                    <h3>PatGrid</h3>
-                    <span class="case-study-type">Multi-Agent System</span>
-                    <p>Reduced patent analysis time by over 75% for an IP firm by architecting a multi-agent system that automates deep research and technical report generation.</p>
-                    <div class="tech-tags">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">LangChain</span>
-                        <span class="tech-tag">LLMs</span>
-                        <span class="tech-tag">RAG</span>
-                    </div>
-                </div>
-                <div class="case-study-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="case-study-icon"><i class="bi bi-shield-lock-fill"></i></div>
-                    <h3>OpenRecall</h3>
-                    <span class="case-study-type">Privacy-First AI</span>
-                    <p>Built an open-source, on-device alternative to Windows Recall, demonstrating expertise in system-level applications where data privacy is paramount.</p>
-                    <div class="tech-tags">
-                        <span class="tech-tag">Computer Vision</span>
-                        <span class="tech-tag">System-Level Python</span>
-                        <span class="tech-tag">SQLite</span>
-                    </div>
-                </div>
-                <div class="case-study-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="case-study-icon"><i class="bi bi-eye-slash-fill"></i></div>
-                    <h3>RedactWise</h3>
-                    <span class="case-study-type">Specialized AI</span>
-                    <p>Engineered an AI platform to automatically detect and redact sensitive information from legal documents, ensuring compliance.</p>
-                    <div class="tech-tags">
-                        <span class="tech-tag">NLP</span>
-                        <span class="tech-tag">Computer Vision</span>
-                        <span class="tech-tag">Fine-Tuning</span>
-                    </div>
-                </div>
-                <div class="case-study-card" data-aos="fade-up" data-aos-delay="400">
-                    <div class="case-study-icon"><i class="bi bi-code-slash"></i></div>
-                    <h3>tinycoder</h3>
-                    <span class="case-study-type">AI Coding Assistant</span>
-                    <p>Developed an open-source, command-line AI coding assistant to streamline developer workflows, featuring intelligent context-building, multi-LLM support, and deep Git integration.</p>
-                    <div class="tech-tags">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">LLM Integration</span>
-                        <span class="tech-tag">CLI Tool</span>
-                        <span class="tech-tag">Git</span>
-                    </div>
-                </div>
-                <div class="case-study-card" data-aos="fade-up" data-aos-delay="500">
-                    <div class="case-study-icon"><i class="bi bi-gear-wide-connected"></i></div>
-                    <h3>agentpipe</h3>
-                    <span class="case-study-type">Agentic AI Framework</span>
-                    <p>The foundational open-source library I developed for building complex, multi-step AI agents. It enables systems that can reason, use tools, and loop until a goal is achieved, showcasing deep expertise in agent architecture.</p>
-                    <div class="tech-tags">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Agentic AI</span>
-                        <span class="tech-tag">LLM Tooling</span>
-                        <span class="tech-tag">Framework</span>
-                    </div>
-                </div>
-                <div class="case-study-card" data-aos="fade-up" data-aos-delay="600">
-                    <div class="case-study-icon"><i class="bi bi-lightning-charge-fill"></i></div>
-                    <h3>ZenLLM</h3>
-                    <span class="case-study-type">Unified LLM API Library</span>
-                    <p>A minimalist library for interacting with various LLMs. This project highlights my philosophy of building robust, flexible tools that help businesses avoid vendor lock-in and optimize for cost and performance.</p>
-                    <div class="tech-tags">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">LLM Integration</span>
-                        <span class="tech-tag">API</span>
-                        <span class="tech-tag">Performance</span>
-                    </div>
-                </div>
-            </div>
+    
             <div class="inline-testimonial" style="max-width: 800px; margin: 60px auto 0 auto; text-align: center; border-left: none; border-top: 4px solid var(--accent-color);" data-aos="fade-up">
                 <p>"Koen is solution-driven, flexible, and highly knowledgeable in the domain of automation. I particularly appreciated his ingenuity in circumventing the bottlenecks created by our client's legacy systems. He has an outstanding work ethic and always met every deadline."</p>
                 <div class="testimonial-author" style="margin-top: 24px;">
@@ -966,6 +1047,16 @@
             showCursor: true,
             cursorChar: '_',
         });
+
+        // Duplicate carousel items for infinite scroll effect
+        const carouselTrack = document.getElementById('carousel-track');
+        const cards = carouselTrack.querySelectorAll('.case-study-card');
+        
+        // Clone all cards except the last one (which is already a duplicate of the first)
+        for (let i = 0; i < cards.length - 1; i++) {
+            const clone = cards[i].cloneNode(true);
+            carouselTrack.appendChild(clone);
+        }
 
         // Initialize Particles.js with interactive configuration
         particlesJS('particles-js', {
