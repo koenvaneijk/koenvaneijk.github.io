@@ -1159,12 +1159,17 @@
 
         // Initialize Typed.js for the hero headline
         new Typed('#typed-headline', {
-            strings: ["I Build Autonomous AI Agents That Solve Your Toughest Business Problems."],
-            typeSpeed: 40,
+            strings: ["I Build AI Agents That Solve Your Toughest Business Problems."],
+            typeSpeed: 30,
             startDelay: 500,
             loop: false,
             showCursor: true,
             cursorChar: '_',
+            onComplete: (self) => {
+                if (self.cursor) {
+                    self.cursor.style.display = 'none';
+                }
+            },
         });
 
         // Duplicate carousel items for infinite scroll effect
