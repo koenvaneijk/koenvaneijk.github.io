@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koen van Eijk - Autonomous AI Agent Kickstarter</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-print-color-adjust: exact;
+        }
+        h1, h2, h3, h4, .font-poppins {
+            font-family: 'Poppins', sans-serif;
+        }
+        .page {
+            width: 8.5in;
+            height: 11in;
+            background-color: white;
+            box-shadow: 0 0 0.5in rgba(0,0,0,0.1);
+            margin: 2rem auto;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        .bg-consulting-dark { background-color: #0d1f3c; }
+        .bg-consulting-light-gray { background-color: #f4f6f8; }
+        .border-consulting-teal { border-color: #00A3A0; }
+        .text-consulting-teal { color: #00A3A0; }
+        .bg-consulting-teal { background-color: #00A3A0; }
+
+        @media print {
+            html, body {
+                background-color: white;
+            }
+            .page {
+                margin: 0;
+                box-shadow: none;
+                height: 100vh;
+                page-break-after: always;
+            }
+            .page:last-child {
+                page-break-after: auto;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-200">
+
+    <!-- Page 1: The Offer & The Hook -->
+    <div class="page">
+        <div class="flex flex-grow">
+            <!-- Left Sidebar -->
+            <div class="w-2/5 bg-consulting-dark text-white p-8 flex flex-col">
+                <div class="text-center">
+                    <img src="https://raw.githubusercontent.com/koenvaneijk/koenvaneijk.github.io/main/images/koen.jpg" 
+                         alt="Koen van Eijk" 
+                         class="rounded-full w-28 h-28 mx-auto border-4 border-consulting-teal object-cover"
+                         onerror="this.onerror=null;this.src='https://placehold.co/112x112/0d1f3c/FFFFFF?text=KVE';">
+                    <h1 class="text-2xl font-bold mt-4">Koen van Eijk</h1>
+                    <h2 class="text-teal-300">Principal AI Architect</h2>
+                </div>
+                
+                <div class="mt-8 text-sm">
+                    <h3 class="font-poppins font-bold text-teal-300 tracking-wider text-xs uppercase mb-2">About</h3>
+                    <p class="text-gray-300 leading-relaxed">
+                        My journey began with founding Automagica (acquired by Netcall) and has evolved to the cutting edge of agentic AI, where I design multi-agent systems that deliver sophisticated, goal-oriented automation.
+                    </p>
+                </div>
+                
+                <div class="mt-6 text-sm">
+                    <h3 class="font-poppins font-bold text-teal-300 tracking-wider text-xs uppercase mb-3">Core Competencies</h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="flex items-start"><i class="bi bi-robot text-teal-400 mr-2 mt-1"></i><span><strong>Agentic AI Systems:</strong> RAG, LangChain, Multi-Agent Collaboration, Reasoning Loops.</span></li>
+                        <li class="flex items-start"><i class="bi bi-building-gear text-teal-400 mr-2 mt-1"></i><span><strong>Enterprise Automation:</strong> System Architecture, Technical Leadership, Post-Acquisition Integration.</span></li>
+                        <li class="flex items-start"><i class="bi bi-cloud text-teal-400 mr-2 mt-1"></i><span><strong>Cloud & Scalability:</strong> Python, Kubernetes, AWS, GCP, Azure, Productionization.</span></li>
+                    </ul>
+                </div>
+
+                <div class="mt-6 text-sm">
+                    <h3 class="font-poppins font-bold text-teal-300 tracking-wider text-xs uppercase mb-3">Career Highlights</h3>
+                    <div class="relative border-l-2 border-teal-700 ml-2">
+                        <div class="mb-4 ml-6">
+                            <span class="absolute flex items-center justify-center w-4 h-4 bg-teal-500 rounded-full -left-2 ring-4 ring-teal-700"></span>
+                            <h4 class="font-bold text-white">Co-Founder</h4>
+                            <p class="text-xs text-gray-400">Patgrid (2024-Present)</p>
+                        </div>
+                        <div class="mb-4 ml-6">
+                            <span class="absolute flex items-center justify-center w-4 h-4 bg-teal-500 rounded-full -left-2 ring-4 ring-teal-700"></span>
+                            <h4 class="font-bold text-white">RPA Solution Engineer</h4>
+                            <p class="text-xs text-gray-400">Netcall (2020-2023)</p>
+                        </div>
+                        <div class="mb-4 ml-6">
+                            <span class="absolute flex items-center justify-center w-4 h-4 bg-teal-500 rounded-full -left-2 ring-4 ring-teal-700"></span>
+                            <h4 class="font-bold text-white">Co-Founder (Acquired)</h4>
+                            <p class="text-xs text-gray-400">Automagica (2018-2020)</p>
+                        </div>
+                         <div class="ml-6">
+                            <span class="absolute flex items-center justify-center w-4 h-4 bg-teal-500 rounded-full -left-2 ring-4 ring-teal-700"></span>
+                            <h4 class="font-bold text-white">Technology Advisor</h4>
+                            <p class="text-xs text-gray-400">KPMG Belgium (2015-2017)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-auto text-sm">
+                    <h3 class="font-poppins font-bold text-teal-300 tracking-wider text-xs uppercase mb-2">Contact</h3>
+                    <p>koen@koenvaneijk.com</p>
+                    <p>US: +1 512 228 9501 | EU: +32 473 57 62 62</p>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="w-3/5 p-12 flex flex-col">
+                <div>
+                    <h2 class="font-poppins text-4xl font-extrabold text-gray-800 inline-block border-b-4 border-consulting-teal pb-2">The Kickstarter</h2>
+                    <p class="mt-4 text-gray-600">A fixed-price engagement to deploy a custom AI agent in 3-4 weeks, focused on solving a specific, high-value business challenge.</p>
+                </div>
+
+                <div class="mt-8 space-y-6">
+                    <!-- Step 1 -->
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0">
+                            <div class="w-16 h-16 bg-consulting-light-gray rounded-lg flex items-center justify-center">
+                                <i class="bi bi-rulers text-3xl text-consulting-teal"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg text-gray-800">1. AI Opportunity Roadmap Session</h4>
+                            <p class="text-gray-600 text-sm">A paid 90-minute deep dive to co-design a blueprint for your agent. Fee is credited to the project.</p>
+                            <ul class="text-xs text-gray-500 mt-2 list-disc list-inside">
+                                <li><strong>Key Deliverable:</strong> A tangible plan of action & agent blueprint.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0">
+                            <div class="w-16 h-16 bg-consulting-light-gray rounded-lg flex items-center justify-center">
+                                <i class="bi bi-robot text-3xl text-consulting-teal"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg text-gray-800">2. Custom Agent Development</h4>
+                            <p class="text-gray-600 text-sm">I personally build the full solution using enterprise-grade architecture, tailored to the roadmap.</p>
+                             <ul class="text-xs text-gray-500 mt-2 list-disc list-inside">
+                                <li><strong>Key Deliverable:</strong> A fully functional, custom-built AI agent.</li>
+                            </ul>
+                        </div>
+                    </div>
+                     <!-- Step 3 -->
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0">
+                            <div class="w-16 h-16 bg-consulting-light-gray rounded-lg flex items-center justify-center">
+                                <i class="bi bi-rocket-takeoff-fill text-3xl text-consulting-teal"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg text-gray-800">3. Deployment & Handover</h4>
+                            <p class="text-gray-600 text-sm">I deploy the agent into your workflow and ensure a seamless handover to your team.</p>
+                             <ul class="text-xs text-gray-500 mt-2 list-disc list-inside">
+                                <li><strong>Key Deliverable:</strong> Deployed agent & complete documentation.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-auto pt-8">
+                     <div class="bg-consulting-light-gray p-6 rounded-lg flex items-start space-x-4">
+                        <img src="https://raw.githubusercontent.com/koenvaneijk/koenvaneijk.github.io/main/images/richard_billington.jpg" 
+                             alt="Richard Billington" 
+                             class="w-16 h-16 rounded-full object-cover flex-shrink-0"
+                             onerror="this.onerror=null;this.src='https://placehold.co/64x64/cccccc/FFFFFF?text=RB';">
+                        <blockquote class="text-gray-600 italic text-sm">
+                            <p>"Koen's technical acumen... and professionalism made substantial and lasting contributions. His expertise was critical in the seamless integration of his technology into our enterprise platform after the acquisition."</p>
+                            <footer class="mt-2 text-right not-italic">
+                                <span class="font-bold text-gray-800">Richard Billington</span>, <span class="text-gray-500">CTO, Netcall</span>
+                            </footer>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 2: The Proof & The Expertise -->
+    <div class="page">
+        <div class="p-12 flex flex-col h-full">
+            <blockquote class="bg-consulting-light-gray p-6 rounded-lg text-center">
+                <p class="text-gray-600 italic text-lg">"This is a fundamental shift from simple assistants to autonomous systems that can take on entire roles... The future is being built today, one automated workflow at a time."</p>
+                <footer class="mt-2 not-italic">
+                    <span class="font-bold text-gray-800">Peter Van den Spiegel</span>, <span class="text-gray-500">Partner, KPMG</span>
+                </footer>
+            </blockquote>
+
+            <div class="mt-8">
+                <h3 class="font-poppins font-bold text-xl text-consulting-teal border-b-2 border-teal-200 pb-2 mb-4">Select Case Studies</h3>
+                <div class="grid grid-cols-2 gap-x-8 gap-y-6">
+                    <div class="flex items-start space-x-3">
+                        <i class="bi bi-diagram-3-fill text-2xl text-consulting-teal mt-1"></i>
+                        <div>
+                            <h4 class="font-bold text-gray-800">75%+ Reduction in Analysis Time</h4>
+                            <p class="text-sm text-gray-600">For an IP firm by architecting a multi-agent system for research (PatGrid).</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <i class="bi bi-shield-lock-fill text-2xl text-consulting-teal mt-1"></i>
+                        <div>
+                            <h4 class="font-bold text-gray-800">Automated Compliance & Risk Mitigation</h4>
+                            <p class="text-sm text-gray-600">Engineered an AI platform to automatically redact sensitive legal data (RedactWise).</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <i class="bi bi-gear-wide-connected text-2xl text-consulting-teal mt-1"></i>
+                        <div>
+                            <h4 class="font-bold text-gray-800">Accelerated Agent Development</h4>
+                            <p class="text-sm text-gray-600">Built a foundational open-source library for creating complex AI agents (agentpipe).</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <i class="bi bi-eye-slash-fill text-2xl text-consulting-teal mt-1"></i>
+                        <div>
+                            <h4 class="font-bold text-gray-800">Privacy-First System AI</h4>
+                            <p class="text-sm text-gray-600">Created an open-source, on-device alternative to Windows Recall (OpenRecall).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8">
+                <h3 class="font-poppins font-bold text-xl text-consulting-teal border-b-2 border-teal-200 pb-2 mb-4">What Industry Leaders Say</h3>
+                <div class="grid grid-cols-2 gap-8">
+                    <div class="flex items-start space-x-3">
+                        <img src="https://placehold.co/48x48/cccccc/FFFFFF?text=PE" alt="Paul-Emmanuel Tasiaux" class="w-12 h-12 rounded-full object-cover flex-shrink-0">
+                        <blockquote class="text-sm">
+                            <p class="text-gray-600 italic">"An adaptable and highly-driven individual with a practical approach... He always gets the job done."</p>
+                            <footer class="mt-1 text-right not-italic"><span class="font-bold text-gray-800">Paul-Emmanuel Tasiaux</span>, <span class="text-gray-500">Principal, BCG</span></footer>
+                        </blockquote>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <img src="https://placehold.co/48x48/cccccc/FFFFFF?text=JV" alt="Jorrit van den Berg" class="w-12 h-12 rounded-full object-cover flex-shrink-0">
+                        <blockquote class="text-sm">
+                            <p class="text-gray-600 italic">"...very good and passionate about what he does... very skilled in making the complex more simple."</p>
+                            <footer class="mt-1 text-right not-italic"><span class="font-bold text-gray-800">Jorrit van den Berg</span>, <span class="text-gray-500">Ops Manager, Tesla</span></footer>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-auto pt-8">
+                <div class="text-center border-t-2 border-gray-200 pt-6">
+                    <h3 class="font-poppins text-2xl font-bold text-gray-800">Ready to Deploy Your First AI Agent?</h3>
+                    <p class="mt-2 text-gray-600">Schedule your AI Roadmap Session at <a href="https://koenvaneijk.com" target="_blank" class="font-semibold text-consulting-teal underline">koenvaneijk.com</a> or contact me directly.</p>
+                    <p class="mt-1 text-gray-800 font-semibold">koen@koenvaneijk.com</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+
