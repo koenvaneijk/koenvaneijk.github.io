@@ -74,12 +74,8 @@
             font-size: clamp(2.5rem, 5vw, 3.5rem);
             font-weight: 800;
             margin-bottom: 24px;
-            background: linear-gradient(135deg, var(--primary-light) 0%, var(--accent-color) 50%, var(--primary-light) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            background-size: 200% 200%;
-            animation: shimmer 8s ease infinite;
+            color: var(--primary-light);
+            animation: text-glow 2.5s ease-in-out infinite;
             min-height: 210px; /* Prevents layout shift during typing animation */
         }
 
@@ -714,10 +710,13 @@
             color: var(--text-muted);
         }
 
-        @keyframes shimmer {
-            0%{ background-position: 0% 50%; }
-            50%{ background-position: 100% 50%; }
-            100%{ background-position: 0% 50%; }
+        @keyframes text-glow {
+            0%, 100% {
+                text-shadow: 0 0 8px rgba(247, 250, 252, 0.7), 0 0 15px rgba(56, 178, 172, 0.5);
+            }
+            50% {
+                text-shadow: 0 0 16px rgba(247, 250, 252, 1), 0 0 30px rgba(56, 178, 172, 0.8);
+            }
         }
 
         /* Typed.js cursor styling */
